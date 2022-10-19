@@ -1,0 +1,34 @@
+version: "3.3"
+ 
+services:
+
+  nginx-node:
+
+    # コンテナ名を指定
+    container_name: nginx-node
+
+    # docker image を作成するときの指示をするファイル(Dockerfile)の場所を指定
+    build:
+      context: .
+      dockerfile: ./docker/nginx/Dockerfile
+    
+    # こうしておくことで後で3000ポートからアクセスすることが可能になる。
+    ports:
+      - 8080:80
+    # docker 内のディレクトリと同期させるディレクトリを指定。
+    # ディレクトリが存在しない場合は勝手に作成される。
+
+    # tty: true とすることによりコンテナを継続させる。以下URLを参照。 
+    # https://zenn.dev/hohner/articles/43a0da20181d34
+    tty: true
+
+  python:
+    container_name: python
+    build:
+      context: .
+      dockerfile: ./docker/python/Dockerfile
+    ports:
+      - 5000:5000
+    tty: true
+    volumes: 
+      - ./app/python/:/app
