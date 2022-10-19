@@ -1,0 +1,36 @@
+①フロントエンド、バックエンドの環境起動
+docker-compose up -d
+
+②コンテナに入る（node）
+docker-compose exec node bash
+
+③vueプロジェクトの生成
+vue create ai-app-trash
+-> vue3 / npmを選択
+
+④axiosの追加
+cd ai-app-trash
+npm add axios
+
+⑤TailwindCSS, DaisyUIの追加
+npm install -D tailwindcss postcss autoprefixer
+npm install daisyui
+npx tailwindcss init -p
+
+⑥node/ai-appフォルダから以下をコピー
+ai-app/tailwind.config.js
+ai-app/vue.config.js
+ai-app/src/App.vue
+ai-app/src/index.css
+ai-app/src/main.js
+ai-app/src/components/FileUp.vue
+
+⑦apiサーバのパスを必要に応じて書き換え
+ai-app/src/components/FileUp.vue
+の20行目
+
+⑧デバッグ用のサーバ起動
+npm run serve
+
+
+
