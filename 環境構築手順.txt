@@ -1,23 +1,23 @@
-‡@ƒtƒƒ“ƒgƒGƒ“ƒhAƒoƒbƒNƒGƒ“ƒh‚ÌŠÂ‹«‹N“®
+â‘ ãƒ•ãƒ­ãƒ³ãƒˆã‚¨ãƒ³ãƒ‰ã€ãƒãƒƒã‚¯ã‚¨ãƒ³ãƒ‰ã®ç’°å¢ƒèµ·å‹•
 docker-compose up -d
 
-‡AƒRƒ“ƒeƒi‚É“ü‚éinodej
+â‘¡ã‚³ãƒ³ãƒ†ãƒŠã«å…¥ã‚‹ï¼ˆnodeï¼‰
 docker-compose exec node bash
 
-‡BvueƒvƒƒWƒFƒNƒg‚Ì¶¬
+â‘¢vueãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã®ç”Ÿæˆ
 vue create ai-app-trash
--> vue3 / npm‚ğ‘I‘ğ
+-> vue3 / npmã‚’é¸æŠ
 
-‡Caxios‚Ì’Ç‰Á
+â‘£axiosã®è¿½åŠ 
 cd ai-app-trash
 npm add axios
 
-‡DTailwindCSS, DaisyUI‚Ì’Ç‰Á
+â‘¤TailwindCSS, DaisyUIã®è¿½åŠ 
 npm install -D tailwindcss postcss autoprefixer
 npm install daisyui
 npx tailwindcss init -p
 
-‡Enode/ai-appƒtƒHƒ‹ƒ_‚©‚çˆÈ‰º‚ğƒRƒs[
+â‘¥node/ai-appãƒ•ã‚©ãƒ«ãƒ€ã‹ã‚‰ä»¥ä¸‹ã‚’ã‚³ãƒ”ãƒ¼
 ai-app/tailwind.config.js
 ai-app/vue.config.js
 ai-app/src/App.vue
@@ -25,11 +25,11 @@ ai-app/src/index.css
 ai-app/src/main.js
 ai-app/src/components/FileUp.vue
 
-‡FapiƒT[ƒo‚ÌƒpƒX‚ğ•K—v‚É‰‚¶‚Ä‘‚«Š·‚¦
+â‘¦apiã‚µãƒ¼ãƒã®ãƒ‘ã‚¹ã‚’å¿…è¦ã«å¿œã˜ã¦æ›¸ãæ›ãˆ
 ai-app/src/components/FileUp.vue
-‚Ì20s–Ú
+ã®20è¡Œç›®
 
-‡GƒfƒoƒbƒO—p‚ÌƒT[ƒo‹N“®
+â‘§ãƒ‡ãƒãƒƒã‚°ç”¨ã®ã‚µãƒ¼ãƒèµ·å‹•
 npm run serve
 
 
