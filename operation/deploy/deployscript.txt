@@ -1,0 +1,15 @@
+docker build -t plism-app-test .
+
+aws ecr get-login-password | docker login --username AWS --password-stdin 531106999393.dkr.ecr.ap-northeast-1.amazonaws.com
+docker tag plism-app-test:latest 531106999393.dkr.ecr.ap-northeast-1.amazonaws.com/plism-app-test:latest
+docker push 531106999393.dkr.ecr.ap-northeast-1.amazonaws.com/plism-app-test:latest
+
+aws cloudformation create-stack \
+--stack-name lambdatest-stack \
+--template-body file:///home/ec2-user/operation/cfn-lamda-template.yaml
+
+aws cloudformation deploy \
+  --stack-name lambda-container-test \
+  --template-file ./cfn-lamda-template.yaml \
+  --parameter-overrides EcrImageUri=531106999393.dkr.ecr.ap-northeast-1.amazonaws.com/plism-app-test:latest \
+  --capabilities CAPABILITY_IAM
