@@ -32,4 +32,4 @@ def derive_score(request_body: SchemaOfSMRequest):
     _dict = request_body.__dict__   
     sm_detected = apicall.callsm(_dict["Image"])
     ans = crud.get_trashid(sm_detected)
-    return {'result': ans}
+    return {'result': sm_detected}
