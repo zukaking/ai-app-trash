@@ -1,0 +1,1 @@
+python data_aug_fix.py 入力ディレクトリ 出力ディレクトリ カラー 輝度 CLAHE ノイズ 反転

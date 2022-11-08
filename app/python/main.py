@@ -5,6 +5,7 @@ import logging
 import base64
 import crud
 import apicall
+import json
 
 app = FastAPI()
 
@@ -21,7 +22,7 @@ class SchemaOfSMRequest(BaseModel):
 
 class SchemaOfSMResponce(BaseModel):
     result : str
-    
+
 @app.get('/helloworld')
 def get_hello_message():
     return {"message": "Hello World!!"}
@@ -29,7 +30,7 @@ def get_hello_message():
 @app.post('/api/sm', response_model=SchemaOfSMResponce)
 def derive_score(request_body: SchemaOfSMRequest):
     # 辞書形式に変更
-    _dict = request_body.__dict__   
+    _dict = request_body.__dict__
     sm_detected = apicall.callsm(_dict["Image"])
     ans = crud.get_trashid(sm_detected)
-    return {'result': sm_detected}
+    return {'result': json.dumps(sm_detected)}
