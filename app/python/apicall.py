@@ -17,13 +17,20 @@ def callsm(img_base64):
     client = boto3.client('runtime.sagemaker', 'ap-northeast-1')
     res = client.invoke_endpoint(EndpointName='jumpstart-dft-tf-ic-imagenet-mobilenet-v2-100-224-clas', ContentType='application/x-image',Body=data, Accept='application/json;verbose')
     model_predictions = json.loads(res['Body'].read())
-    predicted_label = model_predictions['predicted_label']
+    #predicted_label = model_predictions['predicted_label']
     labels = model_predictions['labels']
     probabilities = model_predictions['probabilities']
+
+    zip_lists = zip(probabilities, labels)
+    # 昇順でソート
+    zip_sort = sorted(zip_lists)
+    # zipを解除
+    probabilities, labels = zip(*zip_sort)
+
     output = {
             #"predicted_label" : predicted_label[0:5],
-            "labels" : model_predictions["labels"][0:5],
-            "probabilities" : model_predictions["probabilities"][0:5]
+            "labels" : labels[0:5],
+            "probabilities" : probabilities[0:5]
             }
     print(output)
     return  output
