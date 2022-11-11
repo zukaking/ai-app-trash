@@ -23,7 +23,7 @@ def callsm(img_base64):
 
     zip_lists = zip(probabilities, labels)
     # 昇順でソート
-    zip_sort = sorted(zip_lists)
+    zip_sort = sorted(zip_lists,reverse=True)
     # zipを解除
     probabilities, labels = zip(*zip_sort)
 
