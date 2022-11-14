@@ -17,13 +17,16 @@ if len(sys.argv) != 8:
 else:   
     print("ok")
     input_path = sys.argv[1]
-    file_list = glob.glob(input_path + "\\**.jpg", recursive=True)
+    ext_list = (['png', 'jpg', 'jpeg', 'PNG', 'JPG', 'JPEG'])
+    file_list = []
+    for ext in ext_list:
+        file_list += glob.glob(input_path + "/**." + ext)
     print(input_path)
     print(file_list)
     for item in file_list:
-        split_name = item.split('\\')
-        output_name = sys.argv[2] + "\\" + split_name[-2] + "\\" + split_name[-1]
-        output_dir = sys.argv[2] + "\\" + split_name[-2]
+        split_name = item.split('/')
+        output_name = sys.argv[2] + "/" + split_name[-2] + "/" + split_name[-1]
+        output_dir = sys.argv[2] + "/" + split_name[-2]
         pathlib.Path(output_dir).mkdir(parents=True,exist_ok=True)
         if sys.argv[3] == "1":
             print("color")

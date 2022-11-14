@@ -9,7 +9,7 @@ def get_trashid(labels : list[str]):
         connector =  psycopg2.connect('postgresql://{user}:{password}@{host}:{port}/{dbname}'.format(
                     user="postgres",        #ユーザ
                     password="passw0rd",     #パスワード
-                    host="18.181.197.79",       #ホスト名
+                    host="18.183.180.242",       #ホスト名
                     port="5432",            #ポート
                     dbname="plismdb"))    #データベース名
 
