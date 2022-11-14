@@ -38,42 +38,42 @@ else:
         #cv2.imshow('equalize', img)
         #cv2.waitKey(0)
 
-        #²èÁü½èÍıÉôÊ¬
-        ###²èÁü¤Îµ±ÅÙ¤ò¾å¤²¤ë
+        #ç”»åƒå‡¦ç†éƒ¨åˆ†
+        ###ç”»åƒã®è¼åº¦ã‚’ä¸Šã’ã‚‹
         #print(img)
         if sys.argv[4] == "1":
-            chg_img=img*1.2 #µ±ÅÙ¤¬£²ÇÜ¤Ë¤Ê¤ë
+            chg_img=img*1.2 #è¼åº¦ãŒï¼’å€ã«ãªã‚‹
 
 
-        ###²èÁü¤Î¥ê¥µ¥¤¥º
+        ###ç”»åƒã®ãƒªã‚µã‚¤ã‚º
         height = img.shape[0]
-        #img.shape[0]*0.5¤Ç¤â¤È¤ÎÈ¾Ê¬¤Î¥µ¥¤¥º
+        #img.shape[0]*0.5ã§ã‚‚ã¨ã®åŠåˆ†ã®ã‚µã‚¤ã‚º
         width = img.shape[1]
         chg_img = cv2.resize(img , (int(width), int(height)))
         if sys.argv[5] == "1" and sys.argv[3] != "1":
-            ###CLAHE¡Ê¥Ò¥¹¥È¥°¥é¥à¤¬¤Ç¤­¤ë¤À¤±¶ÑÅù¤Ë¥Ğ¥é¤±¤ë¤è¤¦¤ËºÆÇÛÊ¬¡Ë
+            ###CLAHEï¼ˆãƒ’ã‚¹ãƒˆã‚°ãƒ©ãƒ ãŒã§ãã‚‹ã ã‘å‡ç­‰ã«ãƒãƒ©ã‘ã‚‹ã‚ˆã†ã«å†é…åˆ†ï¼‰
             clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(8,8))
             chg_img = clahe.apply(img)
         if sys.argv[6] == "1":
-            ###¥Î¥¤¥º
+            ###ãƒã‚¤ã‚º
             if sys.argv[3] == "1":
                 row,col,ch = img.shape
             else:
                 row,col = img.shape
             
-            # Çò
-            pts_x = np.random.randint(0, col-1 , 1000) #0¤«¤é(col-1)¤Ş¤Ç¤ÎÍğ¿ô¤òÀé¸Äºî¤ë
+            # ç™½
+            pts_x = np.random.randint(0, col-1 , 1000) #0ã‹ã‚‰(col-1)ã¾ã§ã®ä¹±æ•°ã‚’åƒå€‹ä½œã‚‹
             pts_y = np.random.randint(0, row-1 , 1000)
-            img[(pts_y,pts_x)] = (255) #y,x¤Î½çÈÖ¤Ë¤Ê¤ë¤³¤È¤ËÃí°Õ
+            img[(pts_y,pts_x)] = (255) #y,xã®é †ç•ªã«ãªã‚‹ã“ã¨ã«æ³¨æ„
 
-            # ¹õ
+            # é»’
             pts_x = np.random.randint(0, col-1 , 1000)
             pts_y = np.random.randint(0, row-1 , 1000)
             img[(pts_y,pts_x)] = (0)
         if sys.argv[7] == "1":
-            ###²èÁü¤òÏÄ¤á¤ë
-            chg_img = cv2.flip(img, 1) #¿åÊ¿Êı¸ş¤ËÈ¿Å¾
-            chg_img = cv2.flip(img, 0) #¿âÄ¾Êı¸ş¤ËÈ¿Å¾
+            ###ç”»åƒã‚’æ­ªã‚ã‚‹
+            chg_img = cv2.flip(img, 1) #æ°´å¹³æ–¹å‘ã«åè»¢
+            chg_img = cv2.flip(img, 0) #å‚ç›´æ–¹å‘ã«åè»¢
             #print("end")
 
         print(output_name)
