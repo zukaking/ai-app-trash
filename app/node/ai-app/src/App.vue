@@ -1,18 +1,19 @@
 <template>
   <!--<img alt="Vue logo" src="./assets/logo.png">-->
   <FileUp msg="file upload"/>
+  <CameraSet msg="camera"/>
 </template>
 
 <script>
 import FileUp from './components/FileUp.vue'
-//import HelloWorld from './components/HelloWorld.vue'
+import CameraSet from './components/CameraSet.vue'
 //import CallSM from './components/CallSM.vue'
 
 export default {
   name: 'App',
   components: {
     FileUp,
-    //HelloWorld
+    CameraSet
   }
 }
 </script>

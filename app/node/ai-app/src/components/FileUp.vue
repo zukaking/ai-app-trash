@@ -17,8 +17,8 @@ const smRequests = reactive({
   Image: ''
 })
 
-const rootname = "http://ec2-52-194-191-241.ap-northeast-1.compute.amazonaws.com"
-//const rootname = "http://localhost"
+//const rootname = "http://ec2-52-194-191-241.ap-northeast-1.compute.amazonaws.com"
+const rootname = "http://localhost"
 
 export default {
   name: 'FileUp',
