@@ -5,14 +5,14 @@
 </template>
 
 <script>
-import FileUp from './components/FileUp.vue'
+//import FileUp from './components/FileUp.vue'
 import CameraSet from './components/CameraSet.vue'
 //import CallSM from './components/CallSM.vue'
 
 export default {
   name: 'App',
   components: {
-    FileUp,
+//    FileUp,
     CameraSet
   }
 }
