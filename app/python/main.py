@@ -22,6 +22,9 @@ class SchemaOfSMRequest(BaseModel):
 
 class SchemaOfSMResponce(BaseModel):
     result : str
+    label : str
+    probability : float
+    clss : str
 
 @app.get('/helloworld')
 def get_hello_message():
@@ -34,5 +37,12 @@ def derive_score(request_body: SchemaOfSMRequest):
     sm_detected = apicall.callsm(_dict["Image"])
     clss = crud.get_trashid(sm_detected["labels"])
     sm_detected["clss"]=clss
+    ret = {}
+    ret["clss"] = sm_detected["clss"][0]
+    ret["result"] = json.dumps(sm_detected)
+    ret["label"] = sm_detected["labels"][0]
+    ret["probability"] = sm_detected["probabilities"][0]
+    print(sm_detected)
+    print(ret)
 
-    return {'result': json.dumps(sm_detected)}
+    return ret

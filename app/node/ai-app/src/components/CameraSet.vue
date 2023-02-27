@@ -5,6 +5,11 @@
       <button color="info" id="snap" v-on:click="capture()">Snap Photo</button>
     </div>
     <canvas ref="canvas" id="canvas" width="500" height="500"></canvas>
+
+    <p v-if="showOutput">出力ラベル（TOP1） : {{smRetvalue.label}}</p> <br/>
+    <p v-if="showOutput">確信度（TOP1） : {{smRetvalue.probabilities}}</p> <br/>
+    <p v-if="showOutput">ゴミ分類結果（TOP1） : {{smRetvalue.clss}}</p> <br/>
+    <p v-if="showOutput">log : {{smRetvalue.log}}</p> <br/>
   </div>
 </template>
 
@@ -26,7 +31,7 @@ export default {
   data(){
     return {
       showOutput: false,
-      smRetvalue:'unkown'
+      smRetvalue: {}
     }
   },
   mounted () {
@@ -49,8 +54,13 @@ export default {
       smRequests.Image = this.canvas.toDataURL('image/png')
       axios.post(endPoint,smRequests).then(
         (response) => {
-          this.smRetvalue = response.data.result
+          this.smRetvalue.label = response.data.label
+          this.smRetvalue.probabilities = response.data.probability
+          this.smRetvalue.clss = response.data.clss
+          this.smRetvalue.log = response.data.result
           this.showOutput = true
+          console.log(response.data.result)
+
         }
       ).catch( (error) => {
         console.log(error)
