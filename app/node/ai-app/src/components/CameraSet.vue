@@ -16,7 +16,8 @@
 
 <script>
 
-const rootname = "http://ec2-3-112-7-45.ap-northeast-1.compute.amazonaws.com"
+//const rootname = "http://ec2-3-112-7-45.ap-northeast-1.compute.amazonaws.com"
+const rootname = "http://ec2-13-115-179-53.ap-northeast-1.compute.amazonaws.com"
 
 import axios from 'axios'
 import {reactive} from 'vue'
@@ -49,7 +50,7 @@ export default {
     capture () {
       this.canvas = this.$refs.canvas
 
-      const endPoint = rootname + ':5000/api/sm'
+      const endPoint = rootname + ':80/api/sm'
       this.canvas.getContext('2d').drawImage(this.video, 0, 0, 500, 500)
       smRequests.Image = this.canvas.toDataURL('image/png')
       axios.post(endPoint,smRequests).then(
