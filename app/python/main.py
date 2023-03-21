@@ -3,8 +3,8 @@ from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 import logging
 import base64
-import crud
-import apicall
+#import crud
+#import apicall
 import json
 
 app = FastAPI()
@@ -23,10 +23,15 @@ class SchemaOfSMRequest(BaseModel):
 class SchemaOfSMResponce(BaseModel):
     result : str
 
+class SchemaOftoken(BaseModel):
+    token : str
+    userid : str
+
 @app.get('/helloworld')
 def get_hello_message():
     return {"message": "Hello World!!"}
 
+"""
 @app.post('/api/sm', response_model=SchemaOfSMResponce)
 def derive_score(request_body: SchemaOfSMRequest):
     # 辞書形式に変更
@@ -36,3 +41,15 @@ def derive_score(request_body: SchemaOfSMRequest):
     sm_detected["clss"]=clss
 
     return {'result': json.dumps(sm_detected)}
+"""
+
+@app.post('/token')
+def get_token():
+    
+    return {'token': "11111"}
+
+
+@app.delete("/token")
+def delete_data():
+   
+    return {"ok": True}

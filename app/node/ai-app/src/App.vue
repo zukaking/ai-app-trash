@@ -1,22 +1,7 @@
 <template>
   <!--<img alt="Vue logo" src="./assets/logo.png">-->
-  <FileUp msg="file upload"/>
-  <CameraSet msg="camera"/>
+  <router-view/>
 </template>
-
-<script>
-import FileUp from './components/FileUp.vue'
-import CameraSet from './components/CameraSet.vue'
-//import CallSM from './components/CallSM.vue'
-
-export default {
-  name: 'App',
-  components: {
-    FileUp,
-    CameraSet
-  }
-}
-</script>
 
 <style>
 #app {
